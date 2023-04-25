@@ -6,6 +6,7 @@ import 'package:go_router_examples/blocs/page3/page3_cubit.dart';
 import 'package:go_router_examples/page_transitions/b_to_t_transition.dart';
 import 'package:go_router_examples/page_transitions/fade_transition.dart';
 import 'package:go_router_examples/page_transitions/l_to_r_transition.dart';
+import 'package:go_router_examples/page_transitions/mix_transition.dart';
 import 'package:go_router_examples/page_transitions/r_to_l_transition.dart';
 import 'package:go_router_examples/page_transitions/scale_transition.dart';
 import 'package:go_router_examples/page_transitions/t_to_b_transition.dart';
@@ -18,14 +19,14 @@ import 'package:go_router_examples/pages/page_3.dart';
 import 'package:go_router_examples/pages/page_4.dart';
 import 'package:go_router_examples/pages/page_5.dart';
 import 'package:go_router_examples/pages/page_bottom_nav.dart';
-import 'package:go_router_examples/pages/page_home.dart';
 import 'package:go_router_examples/pages/page_drawer_nav.dart';
+import 'package:go_router_examples/pages/page_home.dart';
 import 'package:go_router_examples/pages/page_transitions.dart';
 import 'package:logger/logger.dart';
 
 part 'app_routes.dart';
 
-enum TransitionType { none, fade, rToL, lToR, bToT, tToB, scale }
+enum TransitionType { none, fade, rToL, lToR, bToT, tToB, scale, mix }
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 final GlobalKey<NavigatorState> bottomNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'bottom');
@@ -181,6 +182,11 @@ final appRouter = GoRouter(
                     );
                   case TransitionType.tToB:
                     return TToBPageTransition(
+                      key: state.pageKey,
+                      child: const Page2(),
+                    );
+                  case TransitionType.mix:
+                    return MixPageTransition(
                       key: state.pageKey,
                       child: const Page2(),
                     );

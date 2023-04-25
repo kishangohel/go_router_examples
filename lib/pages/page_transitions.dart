@@ -78,6 +78,17 @@ class TransitionsPage extends StatelessWidget {
             },
             child: const Text('Scale Transition :Page2'),
           ),
+          ElevatedButton(
+            onPressed: () {
+              context.goNamed(
+                AppRoutes.page2,
+                params: {
+                  'type': TransitionType.mix.name,
+                },
+              );
+            },
+            child: const Text('Mix Transition :Page2'),
+          ),
         ],
       ),
     );
